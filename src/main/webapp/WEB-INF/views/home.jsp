@@ -27,9 +27,6 @@
   * 회원등급 :  0.관리자, 1.우수회원, 2.정회원, 3.준회원, 99.비회원, 999.탈퇴회원
   
   * 메세지 처리파일경로? logout / joinOk / memberUpdateOk.... 등등
-  
-  (문제)
-  회원로그인시 : 접속아이디의 첫글자가 'a'로 시작하면 '관리자'... 모든 사용자의 비밀번호는 모두 '1234'로 처리한다.
 </pre>
 <hr/>
 <p>
@@ -40,6 +37,7 @@
 </p>
 <p>
   <a href="${ctp}/member/memberLogin" class="btn btn-warning">로그인</a>
+  <a href="${ctp}/member/memberLogout" class="btn btn-warning">로그아웃</a>
   <a href="${ctp}/member/memberJoin" class="btn btn-warning">회원가입</a>
   <a href="${ctp}/member/memberIdCheck" class="btn btn-warning">아이디체크</a>
   <a href="${ctp}/member/memberJoinOk" class="btn btn-warning">회원가입Ok</a>
@@ -56,7 +54,7 @@
   <a href="${ctp}/board/boardInput" class="btn btn-primary">게시판 글쓰기</a>
   <a href="${ctp}/board/boardUpdate" class="btn btn-primary">게시판 수정하기</a>
   <a href="${ctp}/board/boardDelete" class="btn btn-primary">게시판 삭제하기</a>
-  <a href="${ctp}/board/boardContent" class="btn btn-primary">게시판 내용보기</a>
+  <a href="${ctp}/board/boardContent" class="btn btn-primary">게시판 내용보기</a> <!-- 내용보기는 준회원까지 허용 -->
 </p>
 <p>
   <a href="${ctp}/pds/pdsList" class="btn btn-info">자료실 리스트</a>
@@ -65,6 +63,11 @@
   <a href="${ctp}/pds/pdsDelete" class="btn btn-info">자료실 삭제하기</a>
   <a href="${ctp}/pds/pdsContent" class="btn btn-info">자료실 내용보기</a>
   <a href="${ctp}/pds/pdsDownload" class="btn btn-info">자료실 내용받기</a>
+</p>
+<p>
+  <a href="${ctp}/admin/adminMain" class="btn btn-danger">관리자 메인화면</a>
+  <a href="${ctp}/admin/adminLeft" class="btn btn-danger">관리자 왼쪽메뉴</a>
+  <a href="${ctp}/admin/adminRight" class="btn btn-danger">관리자 오른쪽내용</a>
 </p>
 </div>
 </body>

@@ -8,24 +8,24 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class PdsInterceptor extends HandlerInterceptorAdapter {
+public class AdminInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		System.out.println("이곳은 preHandle안의 preHandle 메소드 입니다.");
+		System.out.println("이곳은 AdminInterceptor안의 preHandle 메소드 입니다.");
 		
 		HttpSession session = request.getSession();
 		
 		int level = session.getAttribute("sLevel")==null ? 99 : (int) session.getAttribute("sLevel");
-		
+
 		if(level > 3) {
 			String viewPage = "/message/loginError";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 			return false;
 		}
-		else if(level >= 2) {
+		else if(level != 0) {
 			String viewPage = "/message/levelError";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
@@ -40,7 +40,7 @@ public class PdsInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		System.out.println("이곳은 preHandle안의 postHandle 메소드 입니다.");
+		System.out.println("이곳은 AdminInterceptor안의 postHandle 메소드 입니다.");
 
 		super.postHandle(request, response, handler, modelAndView);
 	}

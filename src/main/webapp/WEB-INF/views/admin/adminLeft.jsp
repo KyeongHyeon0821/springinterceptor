@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="ctp" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>adminLeft.jsp</title>
+  <jsp:include page="/WEB-INF/views/include/bs5.jsp" />
+</head>
+<body>
+<jsp:include page="/WEB-INF/views/include/nav.jsp" />
+<jsp:include page="/WEB-INF/views/include/slide2.jsp" />
+<p><br/></p>
+<div class="container">
+  <h2>관리자 왼쪽 메뉴 화면</h2>
+  <hr/>
+  <div><img src="${ctp}/images/15.jpg" width="500px"/></div>
+  <hr/>
+  <div>서버로부터 전송된값 : ${data}</div>
+  <hr/>
+  <div><a href="${ctp}/" class="btn btn-warning">홈으로 돌아가기</a></div>
+</div>
+<p><br/></p>
+<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+</body>
+</html>

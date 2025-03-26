@@ -28,10 +28,21 @@
 	<beans:bean id="memberInterceptor" class="com.spring.springinterceptor.interceptor.MemberInterceptor" />
 	<beans:bean id="boardInterceptor" class="com.spring.springinterceptor.interceptor.BoardInterceptor" />
 	<beans:bean id="pdsInterceptor" class="com.spring.springinterceptor.interceptor.PdsInterceptor" />
+	<beans:bean id="adminInterceptor" class="com.spring.springinterceptor.interceptor.AdminInterceptor" />
+	<beans:bean id="loginInterceptor" class="com.spring.springinterceptor.interceptor.LoginInterceptor" />
 	
 	<interceptors>
-		<interceptor>
+	
+<!-- 		<interceptor>
+			<mapping path="/board/**"/>
+			<mapping path="/pds/**"/>
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+		 -->
+		<interceptor> <!-- 로그인 수행후에 처리할 설정(최소 준회원 이상) -->
 			<mapping path="/member/**"/>
+			<mapping path="/board/boardList"/>
+			<mapping path="/board/boardContent"/>
 			<exclude-mapping path="/member/memberLogin"/>
 			<exclude-mapping path="/member/memberJoin"/>
 			<exclude-mapping path="/member/memberIdCheck"/>
@@ -39,23 +50,28 @@
 			<exclude-mapping path="/member/memberLogout"/>
 			<beans:ref bean="memberInterceptor" />
 		</interceptor>
-	</interceptors>
 	
-	<interceptors>
-		<interceptor>
+		<interceptor> <!-- 최소 정회원 이상 -->
 			<mapping path="/board/**"/>
+			<mapping path="/pds/pdsList"/>
+			<mapping path="/member/memberList"/>
+			<mapping path="/member/memberSearch"/>
 			<exclude-mapping path="/board/boardList"/>
+			<exclude-mapping path="/board/boardContent"/>
+			<exclude-mapping path="/member/memberDelete"/>
 			<beans:ref bean="boardInterceptor" />
 		</interceptor>
-	</interceptors>
 	
-	<interceptors>
-		<interceptor>
+		<interceptor> <!-- 최소 우수회원 이상 -->
 			<mapping path="/pds/**"/>
+			<exclude-mapping path="/pds/pdsList"/>
 			<beans:ref bean="pdsInterceptor" />
 		</interceptor>
+	
+		<interceptor> <!-- 관리자만 -->
+			<mapping path="/admin/**"/>
+			<beans:ref bean="adminInterceptor" />
+		</interceptor>
+		
 	</interceptors>
-	
-	
-	
 </beans:beans>
